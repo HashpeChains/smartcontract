@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-
+pragma solidity 0.5.16;
 interface IHRC20 {
   /**
    * @dev Returns the amount of tokens in existence.
@@ -23,7 +22,7 @@ interface IHRC20 {
   function name() external view returns (string memory);
 
   /**
-   * @dev Returns the bep token owner.
+   * @dev Returns the HRC token owner.
    */
   function getOwner() external view returns (address);
 
@@ -350,17 +349,17 @@ contract HRC20Token is Context, IHRC20, Ownable {
   string private _name;
 
   constructor() public {
-    _name = {{TOKEN_NAME}};
-    _symbol = {{TOKEN_SYMBOL}};
-    _decimals = {{DECIMALS}};
-    _totalSupply = {{TOTAL_SUPPLY}};
+    _name = "LIOMINT";
+    _symbol = "LMT";
+    _decimals = 8;
+    _totalSupply = 1000000000000000;
     _balances[msg.sender] = _totalSupply;
 
     emit Transfer(address(0), msg.sender, _totalSupply);
   }
 
   /**
-   * @dev Returns the bep token owner.
+   * @dev Returns the HRC token owner.
    */
   function getOwner() external view returns (address) {
     return owner();
